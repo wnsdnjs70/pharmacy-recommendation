@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: local # 프로그램이 실행되면 로컬을 디폴트로 함
+    group: # group 키워드를 통해 분리된 profile을 같이 실행할 수 있다. local, prod가 실행될 때 같이 쓰이기 때문에 묶어둔 common을 같이 실행.
+      local:
+        - common
+      prod:
+        - common
+
+--- # 파일을 나누어 작성하지 않아도 해당 구분자를 통해 파일 분리 효과를 낼 수 있음
+spring:
+  config:
+    activate:
+      on-profile: common # local, prod 에서 같이 사용할 것
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/pharmacy-recommendation
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: create # 개발 할 때만 create로 해놓고 운영에서는 validate나 다른걸로 해놔야댐
+    show-sql: true
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+---
