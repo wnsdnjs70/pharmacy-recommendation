@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:mariadb:10:/// # tc 키워드를 입력하면 컨테이너를 띄울 때 필요한 포트를 알아서 포워딩 해줌
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+kakao:
+  rest:
+    api:
+      key: ${KAKAO_REST_API_KEY}
