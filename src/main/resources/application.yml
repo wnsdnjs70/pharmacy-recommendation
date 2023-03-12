@@ -13,6 +13,11 @@ spring:
     activate:
       on-profile: common # local, prod 에서 같이 사용할 것
 
+kakao:
+  rest:
+    api:
+      key: ${KAKAO_REST_API_KEY} # 환경변수 설정 (실행버튼 옆 아래 화살표 -> Edit configuration )
+
 ---
 spring:
   config:
