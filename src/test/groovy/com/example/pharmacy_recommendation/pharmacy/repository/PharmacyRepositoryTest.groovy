@@ -9,6 +9,12 @@ class PharmacyRepositoryTest extends AbstractIntegrationContainerBaseTest {
     @Autowired
     private PharmacyRepository pharmacyRepository
 
+    // 싱글턴을 사용하기 때문에 매번 테스트 케이스가 다를 수 있음. 따라서 setup()으로 db 초기화를 해줘야됨
+    def setup(){
+        pharmacyRepository.deleteAll()
+    }
+
+
     def "PharmacyRepository Save"(){
         given:
         String address = "서울 특별시 성북구 종암동"

@@ -1,5 +1,6 @@
 package com.example.pharmacy_recommendation.pharmacy.entity;
 
+import com.example.pharmacy_recommendation.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,11 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "pharmacy")
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
-public class Pharmacy {
+public class Pharmacy extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +27,7 @@ public class Pharmacy {
     private double longitude;
     private double latitude;
 
+    public void changePharmacyAddress(String address) {
+        this.pharmacyAddress = address;
+    }
 }

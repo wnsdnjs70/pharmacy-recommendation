@@ -19,5 +19,6 @@ services:
       - MARIADB_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
     volumes:  # mariadb에서 한글이 깨지는걸 막기 위해 local의 config 파일을 참조하기 위해 작성
       - ./database/config:/etc/mysql/conf.d
+      - ./database/init:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306" # DB가 기본 포트를 3306 써서 그대로 포워딩
